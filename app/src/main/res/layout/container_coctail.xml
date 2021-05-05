@@ -5,7 +5,17 @@
     android:clickable="true"
     android:orientation="horizontal"
     android:padding="10dp">
-    
+
+
+    <ImageView
+        android:id="@+id/imgLink"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/link_description"
+        android:src="@drawable/logo" />
+
     <TextView
         android:id="@+id/textName"
         android:layout_width="wrap_content"
@@ -14,7 +24,8 @@
         android:layout_marginTop="5dp"
         android:text="Coctail"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_below="@id/imgLink"/>
 
     <TextView
         android:id="@+id/textCategory"
@@ -48,5 +59,6 @@
         android:text="Instructions"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/colorSriftasRed" />
+
 
 </RelativeLayout>

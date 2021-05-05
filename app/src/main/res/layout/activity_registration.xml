@@ -53,7 +53,7 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="8dp" />
+        android:layout_height="4dp" />
 
     <EditText
         android:id="@+id/reg_password"
@@ -66,7 +66,7 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="8dp" />
+        android:layout_height="4dp" />
 
     <EditText
         android:id="@+id/reg_email"
@@ -76,10 +76,23 @@
         android:textColorHint="@color/colorSriftasGrey"
         android:inputType="textEmailAddress"
         android:hint="@string/Reg_email" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="4dp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorSriftasRed"
+        android:textColorHint="@color/colorSriftasGrey"
+        android:hint= "@string/Reg_date" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

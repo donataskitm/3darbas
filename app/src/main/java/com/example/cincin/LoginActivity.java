@@ -47,28 +47,13 @@ public class LoginActivity extends AppCompatActivity { //klases pradzia
                 String txtusername = usernameet.getText().toString();
                 String txtpassword = passwordet.getText().toString();
 
-                //cia if vieta
-                //  Toast.makeText(LoginActivity.this, "Vartotojo vardas: " + txtusername + "\n" + "Slaptažodis: " + txtpassword, Toast.LENGTH_SHORT).show(); //1.
-
-                //Intent gotoSearchActivity = new Intent(LoginActivity.this, SearchActivity.class);
-                // startActivity(gotoSearchActivity);
                 //klaidu zurnalo isvalymas
                 usernameet.setError(null);
                 passwordet.setError(null);
 
-                //      EditText etUserName = (EditText) findViewById(R.id.txtsername);
-                //      String strUserName = etUserName.getText().toString();
-
-                //     if(TextUtils.isEmpty(strUserName)) {
-                //         etUserName.setError("Your message");
-                //        return;
-                //     }
-
-
                 if (Validation.isCredentialsValid(txtusername) && Validation.isPasswordValid(txtpassword)) {  //skliaust nusak funkcijos pr., kl. pr., sal. pr.
 
                     //issaugoti SharedPref. duomenis
-
                     user.setUserNameForLogin(txtusername);
                     user.setUserPasswordForLogin(txtpassword);
 
@@ -79,15 +64,10 @@ public class LoginActivity extends AppCompatActivity { //klases pradzia
                         user.setRemembermeKeyForLogin(false);  //kad kita karta nebutu irasyta
                     }
 
-
-                    // System.out.println("Vartotojo vardas: " + user.getUserName() + "\n" + "Slaptažodis: " + user.getUserPassword());
-                    // Toast.makeText(LoginActivity.this, "Vartotojo vardas: " + user.getUserName() + "\n" + "Slaptažodis: " + user.getUserPassword(), Toast.LENGTH_SHORT).show(); //1.
-
                     Intent  gotoSearchActivity = new Intent(LoginActivity.this, SearchActivity.class);//is kur i kur
                     startActivity(gotoSearchActivity);//
                 } else  {
                     usernameet.setError(getResources().getString(R.string.login_invalid_credentials_message));
-                    //usernameet.setError("Pranešimas");
                     usernameet.requestFocus();
                 }
             }

@@ -9,25 +9,25 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String birthDate;
 
     private SharedPreferences sharedPreferences;
 
-
-    private static final String PREFERENCES_PACKAGE_NAME ="com.example.corona";
+    private static final String PREFERENCES_PACKAGE_NAME ="com.example.cincin";
     private static final String USERNAME_KEY = "username";
     private static final String PASSWORD_KEY = "password";
     private static final String REMEMBERME_KEY = "rememberMe";
-
 
     //2. Konstruktoriaus kurimas. Siuo atveju bevardis. Galima ir nekurti - sukuriamas automatiskai
     public User (){
     }
 
     //Konstr. skirtas registracijos langui, perduosime tris parametrus
-    public User (String username, String password, String email){
+    public User (String username, String password, String email, String date){
         this.username=username;
         this.password=password;
         this.email=email;
+        this.birthDate=birthDate;
     }
 
     //konstrukorius prisijungimo langui, perduosime du parametrus
@@ -36,11 +36,10 @@ public class User {
         this.password=password;
 //3. Geteriai ir seteriai
     }
-    //konstruktorius (jau panaudotas prisijungimo lange LoginActivity)
+    //konstruktorius (panaudotas prisijungimo lange LoginActivity)
     public User (Context context){
         this.sharedPreferences = context.getSharedPreferences(PREFERENCES_PACKAGE_NAME, Context.MODE_PRIVATE);
     }
-
 
 
     public String getUserNameForLogin(){
@@ -58,6 +57,7 @@ public class User {
     public void setUserPasswordForLogin(String password){//seteris atititnka negrazinancia funkcija su parametrais
         this.sharedPreferences.edit().putString(PASSWORD_KEY, password).commit();
     }
+
     public boolean isRememberedForLogin(){
         return this.sharedPreferences.getBoolean(REMEMBERME_KEY, false);
     }
@@ -90,4 +90,7 @@ public class User {
         this.email=email;
     }
 
+    public String getBirthDate() {return birthDate;}
+
+    public void setBirthDate(String birthDate) { this.birthDate = birthDate; }
 }

@@ -1,13 +1,14 @@
 package com.example.cincin;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -19,7 +20,10 @@ public class RegistrationActivity extends AppCompatActivity {
         EditText passwordet = findViewById(R.id.reg_password);
         EditText emailet = findViewById(R.id.reg_email);
         Button regb = findViewById(R.id.register_btn_reg);
+        EditText dateet = findViewById(R.id.editText1);
 
+
+        new DatePick(RegistrationActivity.this, dateet);
 
         ///////////////////////////////////////// REGISTRACIJOS MYGTUKUI
         regb.setOnClickListener(new View.OnClickListener() {  //new kuriamas objektas
@@ -28,38 +32,33 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 String txtusername = usernameet.getText().toString();
                 String txtpassword = passwordet.getText().toString();
-                String  txtemail = emailet.getText().toString();
+                String txtemail = emailet.getText().toString();
+                String txtDate = dateet.getText().toString();
 
                 usernameet.setError(null);
                 passwordet.setError(null);
                 emailet.setError(null);
+                dateet.setError(null);
 
-                if (Validation.isCredentialsValid(txtusername) && Validation.isPasswordValid(txtpassword) && Validation.isEmailValid(txtemail)) {  //skliaust nusak funkcijos pr., kl. pr., sal. pr.
+                if (Validation.isCredentialsValid(txtusername) && Validation.isPasswordValid(txtpassword) && Validation.isEmailValid(txtemail) && Validation.isDateValid(txtDate)) {  //skliaust nusak funkcijos pr., kl. pr., sal. pr.
                     Intent gotoSearchActivity = new Intent(RegistrationActivity.this, LoginActivity.class);//is kur i kur
                     startActivity(gotoSearchActivity);
                     Toast.makeText(RegistrationActivity.this, getResources().getString(R.string.register_successful_1) + txtusername + "\n" + getResources().getString(R.string.register_successful_2), Toast.LENGTH_LONG).show();
 
-                }
-                else if (!Validation.isCredentialsValid(txtusername)) {
+                } else if (!Validation.isCredentialsValid(txtusername)) {
                     usernameet.setError(getResources().getString(R.string.login_invalid_credentials_message_name));
                     usernameet.requestFocus();
-                }
-                else if (!Validation.isPasswordValid(txtpassword)) {
+                } else if (!Validation.isPasswordValid(txtpassword)) {
                     passwordet.setError(getResources().getString(R.string.login_invalid_credentials_message_password));
                     passwordet.requestFocus();
-                }
-                else {
+                } else if (!Validation.isDateValid(txtDate)) {
+                    dateet.setError(getResources().getString(R.string.login_invalid_credentials_message_date));
+                    dateet.requestFocus();
+                } else {
                     emailet.setError(getResources().getString(R.string.login_invalid_credentials_message_email));
                     emailet.requestFocus();
                 }
-
-            }
-        });
-
-
-
-
-    }
-
-
+            } //onClick
+        }); //regb.setOnClickListener
+    } //onCreate
 }

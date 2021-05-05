@@ -1,23 +1,21 @@
 package com.example.cincin;
 
 public class Coctail {
-    private String nameId;
     private String name;
     private String category;
     private String glass;
     private String instructions;
+    private String imgLink;
 
 
-    public Coctail(String nameId, String name, String category, String glass, String instructions){
-        this.nameId = nameId;
+    public Coctail(String name, String category, String glass, String instructions, String imgLink){
+
         this.name = name;
         this.category = category;
         this.glass = glass;
         this.instructions = instructions;
-    }
+        this.imgLink = imgLink;
 
-    public String getNameId() {
-        return nameId;
     }
 
     public String getName() {
@@ -36,9 +34,10 @@ public class Coctail {
         return instructions;
     }
 
-    public void setNameId(String nameId) {
-        this.nameId = nameId;
+    public String getImgLink() {
+        return imgLink;
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -56,14 +55,18 @@ public class Coctail {
         this.instructions = instructions;
     }
 
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
     @Override
     public String toString() {
         return "Coctail{" +
-                "nameId='" + nameId + '\'' +
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", glass=" + glass +
                 ", instructions=" + instructions +
+                ", link=" + imgLink +
                 '}';
     }
 
